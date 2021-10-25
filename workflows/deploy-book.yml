@@ -1,0 +1,24 @@
+name: Deploy book
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.10
+      - name: Install dependencies
+        run: pip install -r labs/requirements.txt
+      - name: Build the book
+        run: jupyter-book build labs
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./labs/_build/html

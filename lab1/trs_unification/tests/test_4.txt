@@ -1,4 +1,0 @@
-constructors = f(3), g(2), N(0), M(0)
-variables = q, w, e, r, t, y
-first = f(e, g(w, q), f(r, t, N))
-second = f(f(g(q, w), N, f(w, e, r)), g(f(e, M, t), f(y, t, r)), f(g(N, M), g(M, N), N))

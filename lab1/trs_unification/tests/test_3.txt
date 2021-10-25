@@ -1,4 +1,0 @@
-constructors = f(2       ) , g ( 1 ), C (    0)
-variables = x                                                           , y
-first = f(g(               C         ) , f(y, g(C)                      ))
-second = f(x    ,  C)

@@ -1,0 +1,4 @@
+constructors = Q(3       ), b ( 2)
+variables = a,  c
+first = b(a  , Q ( c, a, a))
+second = b(Q(a, c, a), Q(c, a, a))
