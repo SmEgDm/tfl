@@ -1,3 +1,3 @@
 # Теория формальных языков
 
-[Jupyter book](https://smegdm.github.io/tfl)
+[Jupyter Book](https://smegdm.github.io/tfl)
