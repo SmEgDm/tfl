@@ -6,5 +6,5 @@ root: intro
 chapters:
   - file: lab1/index
     sections:
-      - file: lab1/trs_unification/main
-      - file: lab1/srs_confluence/main
+      - file: lab1/trs_unification/index
+      - file: lab1/srs_confluence/index
