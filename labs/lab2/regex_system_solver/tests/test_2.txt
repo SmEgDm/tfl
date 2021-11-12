@@ -1,0 +1,3 @@
+A = x
+Z = aA + bB + c
+B = y

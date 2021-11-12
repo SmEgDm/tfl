@@ -1,0 +1,3 @@
+O = (o|oo|ooo)O + (oooo|ooooo)
+Y = aZ
+Z = bY + k

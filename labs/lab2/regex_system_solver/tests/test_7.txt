@@ -1,0 +1,2 @@
+X = aX + (s|f)Y + cZ + b
+Y = hY + cX + k

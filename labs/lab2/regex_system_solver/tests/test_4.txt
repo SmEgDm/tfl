@@ -1,0 +1,3 @@
+T = (ts|st)P + f
+P = iT + uT + aR + (i|qwerty|j)
+R = fqs

@@ -1,0 +1,5 @@
+A = (aa|d|fa)A + ggB + (af|q)C + qwertyD + eE + y
+B = kA + gkygB + (bd|qg|fgf)C + lulzD + dfE + (a|k)
+C = (aa|d|fa)A + ggB + (af|q)C + qwertyD + eE + y
+D = (aa|d|fa)A + ggB + (af|q)C + qwertyD + eE + y
+E = (aa|d|fa)A + ggB + (af|q)C + qwertyD + eE + y
