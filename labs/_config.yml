@@ -26,3 +26,6 @@ sphinx:
   config:
     language: ru
     html_show_copyright: false
+
+launch_buttons:
+  binderhub_url: ''
