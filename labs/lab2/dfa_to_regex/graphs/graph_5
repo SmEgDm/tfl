@@ -75,6 +75,6 @@ digraph {
 	"Q₄" [shape=circle]
 	"Q₄" [shape=circle]
 	"Q₄" -> "Q₄" [label=2]
-	"Q₀" [shape=doublecircle]
 	Z [shape=doublecircle]
+	"Q₀" [shape=doublecircle]
 }
