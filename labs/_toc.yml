@@ -7,5 +7,6 @@ chapters:
       - file: lab1/srs_confluence/index
   - file: lab2/index
     sections:
+      - file: lab2/equivalent_regexes/index
       - file: lab2/regex_system_solver/index
       - file: lab2/dfa_to_regex/index
