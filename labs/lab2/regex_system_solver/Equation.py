@@ -1,5 +1,5 @@
 import re
-from Regex import Regex
+import Regex
 
 def parse_var(tokens):
     if len(tokens) != 0 and re.fullmatch(r'[A-Z]', tokens[0]):
@@ -10,7 +10,7 @@ class Equation:
         self.var = var
         self.lin_comb = {var: lin_comb[var] for var in lin_comb}
         if '' not in self.lin_comb:
-            self.lin_comb[''] = Regex()
+            self.lin_comb[''] = Regex.Regex()
     
     def set_parse_var(func):
         global parse_var
@@ -31,7 +31,7 @@ class Equation:
                 raise Exception('Incorrect equation')
             return [term] + parse_L()
         def parse_T():
-            regex = Regex.parse(tokens)
+            regex = Regex.Regex.parse(tokens)
             var = parse_var(tokens) 
             return (var if var != None else '', regex)
         var = parse_var(tokens)
@@ -51,7 +51,7 @@ class Equation:
     def solve(self):
         if self.var not in self.lin_comb:
             return self
-        multiplier = Regex.kleene_star(self.lin_comb[self.var])
+        multiplier = Regex.Regex.kleene_star(self.lin_comb[self.var])
         self.lin_comb = {var: multiplier * coef for var, coef in self.lin_comb.items()}
         del self.lin_comb[self.var]
         return self
@@ -61,9 +61,9 @@ class Equation:
             return self
         multipiler = self.lin_comb[equation.var]
         del self.lin_comb[equation.var]
-        for var in equation.var:
+        for var in equation.lin_comb:
             if var not in self.lin_comb:
-                self.lin_comb[equation.var] = Regex()
+                self.lin_comb[var] = Regex.Regex()
         for var in self.lin_comb:
             if var in equation.lin_comb:
                 self.lin_comb[var] += multipiler * equation.lin_comb[var]
@@ -81,3 +81,14 @@ class Equation:
         if result[-1] == '=':
             return f'{result} {self.lin_comb[""]}'
         return result[:-2]
+
+def solve_system(equations):
+    n = len(equations)
+    for i in range(n):
+        for j in range(i):
+            equations[i].substitute(equations[j])
+        equations[i].solve()
+    for i in range(n - 1, -1, -1):
+        for j  in range(i + 1, n):
+            equations[i].substitute(equations[j])
+    return equations

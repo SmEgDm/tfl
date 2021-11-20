@@ -1,0 +1,1 @@
+<A,{<A,a,B><A,b,E><B,a,B><B,b,C><C,a,C><C,b,D><D,a,D><D,b,B>},{E}>

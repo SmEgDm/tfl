@@ -1,0 +1,5 @@
+letter = r'(?:[ \t]*[a-z0-9]|[ \t]*)'
+state = r'(?:[ \t]*[A-Z][0-9]*[ \t]*)'
+transition = f'(?:[ \t]*<{state},[ \t]*{letter},[ \t]*{state}>[ \t]*)'
+finite_states = f'[ \t]*{"{"}{state}(?:,{state})*{"}"}[ \t]*'
+dfa = f'<{state},[ \t]*{"{"}{transition}+{"}"},{finite_states}>'
