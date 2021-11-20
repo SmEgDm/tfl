@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Алгоритм преобразования DFA в regex &#8212; ТФЯ</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="prev" title="Алгоритм решения системы регулярных выражений" href="../regex_system_solver/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ru">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">ТФЯ</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Искать в этой книге ..." aria-label="Искать в этой книге ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lab1/index.html">
+   Лабораторная работа 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab1/trs_unification/index.html">
+     Алгоритм унификации линейных термов
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab1/srs_confluence/index.html">
+     Проверка конфлюэнтности по перекрытию
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Лабораторная работа 2
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../regex_system_solver/index.html">
+     Алгоритм решения системы регулярных выражений
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Алгоритм преобразования DFA в regex
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Переключить навигацию" aria-controls="site-navigation"
+                title="Переключить навигацию" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Загрузите эту страницу"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/lab2/dfa_to_regex/index.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Скачать исходный файл" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Распечатать в PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SmEgDm/tfl"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Исходный репозиторий"><i
+                    class="fab fa-github"></i>хранилище</button></a>
+        <a class="issues-button"
+            href="https://github.com/SmEgDm/tfl/issues/new?title=Issue%20on%20page%20%2Flab2/dfa_to_regex/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Открыть вопрос"><i class="fas fa-lightbulb"></i>открытый вопрос</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Полноэкранный режим"
+        title="Полноэкранный режим"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SmEgDm/tfl/main?urlpath=tree/labs/lab2/dfa_to_regex/index.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Запуск Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Содержание
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Парсер
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dfa">
+   Класс DFA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Тесты
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="dfa-regex">
+<h1>Алгоритм преобразования DFA в regex<a class="headerlink" href="#dfa-regex" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Пусть <span class="math notranslate nohighlight">\(\mathcal{M} = (Q = \{Q_0, ..., Q_n \}, \Sigma, \delta, Q_0, F)\)</span> — детерминированный конечный автомат, <span class="math notranslate nohighlight">\(\mathcal{K}\)</span> — алгебра регулярных выражений над алфавитом <span class="math notranslate nohighlight">\(\Sigma\)</span> сигнатуры <span class="math notranslate nohighlight">\(\langle \varepsilon, \varnothing, +, \cdot, ^* \rangle\)</span>.<br />
+Рассмотрим следующую систему</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+    \begin{gather*}
+    Q_0 = \alpha_{11}Q_1 + ... + \alpha_{1n}Q_n + \beta_i, \\
+    ... \tag{1}\\
+    Q_n = \alpha_{n1}Q_1 + ... + \alpha_{nn}Q_n + \beta_n; \\
+    \end{gather*}
+\end{cases}
+\end{split}\]</div>
+<p>где <span class="math notranslate nohighlight">\(\alpha_{ij} = \varnothing\)</span>, если <span class="math notranslate nohighlight">\(\nexists \alpha \in \Sigma: \delta(Q_i, \alpha) = Q_j\)</span>, или <span class="math notranslate nohighlight">\(\alpha_{ij} \in \Sigma: \delta(Q_i, \alpha_{ij}) = Q_j\)</span>, а <span class="math notranslate nohighlight">\(\beta_i = \begin{cases}\varepsilon, \; Q_i \in F, \\ \varnothing, \; Q_i \notin F. \end{cases}\)</span></p>
+<p><strong>Утверждение</strong><br />
+<span class="math notranslate nohighlight">\((\gamma_0, ..., \gamma_n)\)</span> — наименьшее решение системы <span class="math notranslate nohighlight">\((1)\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(L(\gamma_0) = L(\mathcal{M}).\)</span></p>
+<p>Перевод DFA в regex реализован в методе to_regex класса DFA.</p>
+<div class="section" id="id1">
+<h2>Парсер<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Синтаксис входных данных чуть дополнен: алфавит <span class="math notranslate nohighlight">\(\Sigma\)</span> может допускать цифры, а индекс у состояний может быть любым натуральным числом.</p>
+<p>Разбор DFA происходит в методе parse класса DFA.</p>
+<p>Регулярные выражения входных данных импортируются из файла <a class="reference external" href="https://github.com/SmEgDm/tfl/tree/main/labs/lab2/dfa_to_regex/rules.py">rules.py</a>.</p>
+</div>
+<div class="section" id="dfa">
+<h2>Класс DFA<a class="headerlink" href="#dfa" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../regex_system_solver/&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">Regex</span>
+<span class="kn">import</span> <span class="nn">Equation</span>
+<span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
+<span class="kn">import</span> <span class="nn">rules</span>
+
+<span class="c1"># Новое правило разбора символа регулярного выражения</span>
+<span class="k">def</span> <span class="nf">parse_symbol</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="s1">&#39;[a-z0-9εØ]&#39;</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">Regex</span><span class="o">.</span><span class="n">Regex</span><span class="p">(</span><span class="n">Regex</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">CONST</span><span class="p">,</span> <span class="n">tokens</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># Новое правило разбора переменных</span>
+<span class="k">def</span> <span class="nf">parse_var</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">parse_index</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\u2080-\u2089]&#39;</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="n">tokens</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">parse_index</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[A-Z]&#39;</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">var</span> <span class="o">+</span> <span class="n">parse_index</span><span class="p">()</span>
+
+<span class="n">Regex</span><span class="o">.</span><span class="n">Regex</span><span class="o">.</span><span class="n">set_parse_symbol</span><span class="p">(</span><span class="n">parse_symbol</span><span class="p">)</span>
+<span class="n">Regex</span><span class="o">.</span><span class="n">Regex</span><span class="o">.</span><span class="n">set_one</span><span class="p">(</span><span class="s1">&#39;ε&#39;</span><span class="p">)</span>
+<span class="n">Regex</span><span class="o">.</span><span class="n">Regex</span><span class="o">.</span><span class="n">set_zero</span><span class="p">(</span><span class="s1">&#39;Ø&#39;</span><span class="p">)</span>
+<span class="n">Equation</span><span class="o">.</span><span class="n">Equation</span><span class="o">.</span><span class="n">set_parse_var</span><span class="p">(</span><span class="n">parse_var</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DFA</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">finite_states</span><span class="p">,</span> <span class="n">transitions</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">states</span> <span class="o">=</span> <span class="n">states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_state</span> <span class="o">=</span> <span class="n">start_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">finite_states</span> <span class="o">=</span> <span class="n">finite_states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span> <span class="o">=</span> <span class="n">transitions</span>
+    
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">dfa</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Incorrect DFA&#39;</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">to_unicode</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u2080</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="n">digit</span><span class="p">))</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}{</span><span class="n">index</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">start_state</span> <span class="o">=</span> <span class="n">to_unicode</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">states</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">transitions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">transition_text</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">transition</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+            <span class="n">transition</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;(</span><span class="si">{</span><span class="n">rules</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s1">),(</span><span class="si">{</span><span class="n">rules</span><span class="o">.</span><span class="n">letter</span><span class="si">}</span><span class="s1">),(</span><span class="si">{</span><span class="n">rules</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s1">)&gt;&#39;</span><span class="p">,</span> <span class="n">transition_text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">transitions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">to_unicode</span><span class="p">(</span><span class="n">transition</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">transition</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">to_unicode</span><span class="p">(</span><span class="n">transition</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+            <span class="n">states</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">to_unicode</span><span class="p">(</span><span class="n">transition</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span> <span class="n">states</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">to_unicode</span><span class="p">(</span><span class="n">transition</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="n">finite_states</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">finite_state</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">finite_states</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)):</span>
+            <span class="n">finite_states</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">to_unicode</span><span class="p">(</span><span class="n">finite_state</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">DFA</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">finite_states</span><span class="p">,</span> <span class="n">transitions</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">to_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rankdir&#39;</span><span class="p">:</span> <span class="s1">&#39;LR&#39;</span><span class="p">},</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_state</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">)</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_state</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">letter</span><span class="p">,</span> <span class="n">other_state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">:</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">other_state</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">other_state</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">finite_state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">finite_states</span><span class="p">:</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">finite_state</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;doublecircle&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">graph</span>
+
+    <span class="k">def</span> <span class="nf">to_regex</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">start_equation</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">system</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">:</span>
+            <span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">transition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">state</span><span class="p">:</span>
+                    <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transition</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">transition</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">finite_states</span><span class="p">:</span>
+                <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;ε&#39;</span><span class="p">)</span>
+            <span class="n">system</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Equation</span><span class="o">.</span><span class="n">Equation</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="s2">&quot;+&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_state</span><span class="p">:</span>
+                <span class="n">start_equation</span> <span class="o">=</span> <span class="n">system</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">Equation</span><span class="o">.</span><span class="n">solve_system</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">start_equation</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1752</span><span class="o">/</span><span class="mf">2887821008.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">Regex</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">Equation</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">rules</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;graphviz&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Тесты<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Tab</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">tests_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;tests&#39;</span><span class="p">))</span>
+<span class="n">graphs_path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/SmEgDm/tfl/tree/main/labs/lab2/dfa_to_regex/graphs&#39;</span>
+
+<span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">output_pattern</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">HTML</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    &lt;div&gt;</span>
+<span class="s1">        &lt;b&gt;Input&lt;/b&gt;&lt;br&gt;</span>
+<span class="s1">        </span><span class="si">{</span><span class="n">input_text</span><span class="si">}</span><span class="s1">&lt;br&gt;&lt;br&gt;</span>
+<span class="s1">        &lt;b&gt;Result&lt;/b&gt;&lt;br&gt;</span>
+<span class="s1">        </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1"></span>
+<span class="s1">    &lt;/div&gt;</span>
+<span class="s1">    &#39;&#39;&#39;</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tests_count</span><span class="p">):</span>
+    <span class="n">input_dfa</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;tests/test_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">dfa</span> <span class="o">=</span> <span class="n">DFA</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">dfa</span><span class="o">.</span><span class="n">to_graph</span><span class="p">()</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;graphs/graph_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">svg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;img src=</span><span class="se">\&#39;</span><span class="si">{</span><span class="n">graphs_path</span><span class="si">}</span><span class="s1">/graph_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.svg</span><span class="se">\&#39;</span><span class="s1"> alt=graph_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+            <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_pattern</span><span class="p">(</span><span class="n">svg</span><span class="p">,</span> <span class="n">dfa</span><span class="o">.</span><span class="n">to_regex</span><span class="p">()))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_pattern</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;lt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;gt;&#39;</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&lt;/b&gt;&#39;</span><span class="p">))</span>
+
+<span class="n">tab</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tests_count</span><span class="p">):</span>
+    <span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Test </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">tab</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">children</span>
+
+<span class="n">tab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0ba055bf5d67458e9129af2c145736af", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lab2/dfa_to_regex"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../regex_system_solver/index.html" title="назад страница">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">назад</p>
+            <p class="prev-next-title">Алгоритм решения системы регулярных выражений</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
