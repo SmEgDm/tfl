@@ -10,3 +10,6 @@ chapters:
       - file: lab2/equivalent_regexes/index
       - file: lab2/regex_system_solver/index
       - file: lab2/dfa_to_regex/index
+  - file: lab3/index
+    sections:
+      - file: lab3/analyze_cfg/index

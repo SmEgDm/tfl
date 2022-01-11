@@ -1,0 +1,7 @@
+S -> aA
+S -> aBb
+S -> bBa
+B -> aaSS
+S -> a
+A -> babaAba
+A -> ba
