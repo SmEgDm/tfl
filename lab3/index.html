@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Лабораторная работа 2 &#8212; Теория Формальных Языков</title>
+    <title>Лабораторная работа 3 &#8212; Теория Формальных Языков</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -45,8 +45,6 @@
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -56,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
     <link rel="search" title="Поиск" href="../search.html" />
-    <link rel="next" title="Эквивалентные регулярные выражения" href="equivalent_regexes/index.html" />
-    <link rel="prev" title="Проверка конфлюэнтности по перекрытию" href="../lab1/srs_confluence/index.html" />
+    <link rel="next" title="Анализ накачек языка" href="analyze_cfg/index.html" />
+    <link rel="prev" title="Алгоритм преобразования DFA в regex" href="../lab2/dfa_to_regex/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="ru">
     
@@ -112,45 +110,45 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lab2/index.html">
    Лабораторная работа 2
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="equivalent_regexes/index.html">
+    <a class="reference internal" href="../lab2/equivalent_regexes/index.html">
      Эквивалентные регулярные выражения
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="regex_system_solver/index.html">
+    <a class="reference internal" href="../lab2/regex_system_solver/index.html">
      Алгоритм решения системы регулярных выражений
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="dfa_to_regex/index.html">
+    <a class="reference internal" href="../lab2/dfa_to_regex/index.html">
      Алгоритм преобразования DFA в regex
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lab3/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Лабораторная работа 3
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lab3/analyze_cfg/index.html">
+    <a class="reference internal" href="analyze_cfg/index.html">
      Анализ накачек языка
     </a>
    </li>
@@ -193,7 +191,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab2/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab3/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Скачать исходный файл" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -213,7 +211,7 @@
                 data-toggle="tooltip" data-placement="left" title="Исходный репозиторий"><i
                     class="fab fa-github"></i>хранилище</button></a>
         <a class="issues-button"
-            href="https://github.com/SmEgDm/tfl/issues/new?title=Issue%20on%20page%20%2Flab2/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SmEgDm/tfl/issues/new?title=Issue%20on%20page%20%2Flab3/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Открыть вопрос"><i class="fas fa-lightbulb"></i>открытый вопрос</button></a>
         
@@ -234,29 +232,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Содержание
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Эквивалентные регулярные выражения
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Алгоритм решения системы регуярных выражений
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dfa-regex">
-   Алгоритм преобразования DFA в regex
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -264,34 +239,11 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Лабораторная работа 2</h1>
+                <h1>Лабораторная работа 3</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Содержание </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Эквивалентные регулярные выражения
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Алгоритм решения системы регуярных выражений
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dfa-regex">
-   Алгоритм преобразования DFA в regex
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -299,46 +251,8 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>Лабораторная работа 2<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<div class="section" id="id2">
-<h2>Эквивалентные регулярные выражения<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Написать три эквивалентных (описывающих один и тот же язык) регулярных выражения:
-академическое; с использованием отрицания; с использованием ленивой итерации Клини. <br />
-Минимальная длина regex — <span class="math notranslate nohighlight">\(10\)</span> символов.<br />
-Сравнить производительность этих regex на <span class="math notranslate nohighlight">\(10\)</span> тестах длиной от <span class="math notranslate nohighlight">\(100\)</span> до <span class="math notranslate nohighlight">\(10^5\)</span> символов.</p>
-</div>
-<div class="section" id="id3">
-<h2>Алгоритм решения системы регуярных выражений<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Реализовать алгоритм решения системы регулярных
-выражений с беззвездными коэффициентами.</p>
-<p><strong>Синтаксис входных данных:</strong><br />
-Элементы метаязыка выделены черным цветом, красным — элементы языка входных данных.<br />
-<span class="math notranslate nohighlight">\(
-\begin{align*}
-    \langle system \rangle &amp;::= \langle equation \rangle^{+} \\
-    \langle equation \rangle &amp;::= \langle var \rangle \textcolor{red}{\textbf{=}} (\langle regex \rangle \langle var \rangle(\textcolor{red}{\textbf{+}}\langle regex \rangle \langle var \rangle)^*\textcolor{red}{\textbf{+}})?\langle regex \rangle \\
-    \langle regex \rangle &amp;::= \textcolor{red}{(}\langle expr \rangle\textcolor{red}{\textbf{|}}\langle alt.regex \rangle\textcolor{red}{)} \; | \; \langle expr \rangle \\
-    \langle alt.regex \rangle &amp;::= \langle expr \rangle\textcolor{red}{\textbf{|}}\langle alt.regex \rangle \; | \; \langle expr \rangle \\
-    \langle expr \rangle &amp;::= \langle letter \rangle \langle expr \rangle \; | \; \langle letter \rangle \\
-    \langle var \rangle &amp;::= \textcolor{red}{A} \; | \; ... \; | \; \textcolor{red}{Z} \\
-    \langle letter \rangle &amp;::= \textcolor{red}{a} \; | \; ... \; | \; \textcolor{red}{z}
-\end{align*}
-\)</span></p>
-</div>
-<div class="section" id="dfa-regex">
-<h2>Алгоритм преобразования DFA в regex<a class="headerlink" href="#dfa-regex" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Реализовать алгоритм преобразования DFA в regex.</p>
-<p><strong>Синтаксис входных данных:</strong><br />
-<span class="math notranslate nohighlight">\(
-\begin{align*}
-    \langle DFA \rangle &amp;::= \textcolor{red}{\textbf{&lt;}}\langle state \rangle\textcolor{red}{,\{}\langle transition \rangle^{+}\textcolor{red}{\},\{}\langle state \rangle(\textcolor{red}{,}\langle state \rangle)^{*}\textcolor{red}{\}\textbf{&gt;}}\\
-    \langle transition \rangle &amp;::= \textcolor{red}{\textbf{&lt;}}\langle state \rangle\textcolor{red}{,}\langle letter \rangle\textcolor{red}{,}\langle state \rangle\textcolor{red}{\textbf{&gt;}} \\
-    \langle state \rangle &amp;::= (\textcolor{red}{A} \; | \; ... \; | \; \textcolor{red}{Z})(\textcolor{red}{0} \; | \; ... \; | \; \textcolor{red}{9})? \\
-    \langle letter \rangle &amp;::= \textcolor{red}{a} \; | \; ... \; | \; \textcolor{red}{z}
-\end{align*}
-\)</span><br />
-Первое состояние в списке — начальное. Список состояний в фигурных скобках задает множество конечных состояний. Список всех состояний явно не перечисляется, он восстанавливается по правилам перехода.</p>
-</div>
+<h1>Лабораторная работа 3<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Здесь появится условие</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -356,7 +270,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./lab2"
+            path: "./lab3"
         },
         predefinedOutput: true
     }
@@ -368,17 +282,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../lab1/srs_confluence/index.html" title="назад страница">
+    <a class='left-prev' id="prev-link" href="../lab2/dfa_to_regex/index.html" title="назад страница">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">назад</p>
-            <p class="prev-next-title">Проверка конфлюэнтности по перекрытию</p>
+            <p class="prev-next-title">Алгоритм преобразования DFA в regex</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="equivalent_regexes/index.html" title="вперёд страница">
+    <a class='right-next' id="next-link" href="analyze_cfg/index.html" title="вперёд страница">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">вперёд</p>
-        <p class="prev-next-title">Эквивалентные регулярные выражения</p>
+        <p class="prev-next-title">Анализ накачек языка</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
