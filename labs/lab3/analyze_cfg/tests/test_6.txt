@@ -1,0 +1,5 @@
+S -> aM
+K -> aaKa
+K -> a
+S -> bM
+M -> aK

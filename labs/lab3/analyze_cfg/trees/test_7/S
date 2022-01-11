@@ -1,0 +1,7 @@
+digraph {
+	0 [label=S shape=circle]
+	1 [label=a shape=circle]
+	0 -> 1
+	2 [label=S shape=circle]
+	0 -> 2
+}

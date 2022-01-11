@@ -24,6 +24,9 @@ class Rule:
 
         return Rule(left_side, right_side)
 
+    def is_recursive(self):
+        return self.left_side in self.right_side
+
     def right_side_to_str(self) -> str:
         return ''.join(map(str, self.right_side))
     

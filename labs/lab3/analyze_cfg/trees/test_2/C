@@ -1,0 +1,25 @@
+digraph {
+	2 [label=C shape=circle]
+	3 [label=d shape=circle]
+	2 -> 3
+	4 [label=S shape=circle]
+	5 [label=a shape=circle]
+	4 -> 5
+	6 [label=b shape=circle]
+	4 -> 6
+	7 [label=c shape=circle]
+	4 -> 7
+	8 [label=d shape=circle]
+	4 -> 8
+	9 [label=A shape=circle]
+	10 [label=b shape=circle]
+	9 -> 10
+	11 [label=B shape=circle]
+	12 [label=c shape=circle]
+	11 -> 12
+	13 [label=C shape=circle]
+	11 -> 13
+	9 -> 11
+	4 -> 9
+	2 -> 4
+}
