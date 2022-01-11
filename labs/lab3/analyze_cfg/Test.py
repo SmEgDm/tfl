@@ -7,7 +7,7 @@ TESTS = []
 
 TREES_PATH = 'trees'
 
-TREES_PATH_GITHUB = "https://github.com/SmEgDm/tfl/tree/main/labs/lab3/"
+TREES_PATH_GITHUB = "https://raw.githubusercontent.com/SmEgDm/tfl/main/labs/lab3/analyze_cfg"
 
 class Test:
     def __init__(self, name, test_path):
