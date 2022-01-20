@@ -13,3 +13,7 @@ chapters:
   - file: lab3/index
     sections:
       - file: lab3/analyze_cfg/index
+  - file: lab4/index
+    sections:
+      - file: lab4/panic_attack/index
+      - file: lab4/autolex/index
