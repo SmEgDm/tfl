@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Автолекс &#8212; Теория Формальных Языков</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="prev" title="Паническая атака" href="../panic_attack/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ru">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Теория Формальных Языков</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Искать в этой книге ..." aria-label="Искать в этой книге ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lab1/index.html">
+   Лабораторная работа 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab1/trs_unification/index.html">
+     Алгоритм унификации линейных термов
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab1/srs_confluence/index.html">
+     Проверка конфлюэнтности по перекрытию
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lab2/index.html">
+   Лабораторная работа 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab2/equivalent_regexes/index.html">
+     Эквивалентные регулярные выражения
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab2/regex_system_solver/index.html">
+     Алгоритм решения системы регулярных выражений
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab2/dfa_to_regex/index.html">
+     Алгоритм преобразования DFA в regex
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lab3/index.html">
+   Лабораторная работа 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab3/analyze_cfg/index.html">
+     Анализ накачек языка
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Лабораторная работа 4
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../panic_attack/index.html">
+     Паническая атака
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Автолекс
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Переключить навигацию" aria-controls="site-navigation"
+                title="Переключить навигацию" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Загрузите эту страницу"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/lab4/autolex/index.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Скачать исходный файл" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Распечатать в PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SmEgDm/tfl"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Исходный репозиторий"><i
+                    class="fab fa-github"></i>хранилище</button></a>
+        <a class="issues-button"
+            href="https://github.com/SmEgDm/tfl/issues/new?title=Issue%20on%20page%20%2Flab4/autolex/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Открыть вопрос"><i class="fas fa-lightbulb"></i>открытый вопрос</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Полноэкранный режим"
+        title="Полноэкранный режим"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Содержание
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Обертка в охранные нетерминалы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first">
+   FIRST
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#follow">
+   FOLLOW
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#last">
+   LAST
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#precede">
+   PRECEDE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   Поиск токенов
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   Порождение регулярных выражений
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   Автолексер
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   Тесты
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Автолекс</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Содержание </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Обертка в охранные нетерминалы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first">
+   FIRST
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#follow">
+   FOLLOW
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#last">
+   LAST
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#precede">
+   PRECEDE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   Поиск токенов
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   Порождение регулярных выражений
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   Автолексер
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   Тесты
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>Автолекс<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CFG</span> <span class="kn">import</span> <span class="n">CFG</span>
+<span class="kn">from</span> <span class="nn">RG</span> <span class="kn">import</span> <span class="n">RG</span>
+<span class="kn">from</span> <span class="nn">Rule</span> <span class="kn">import</span> <span class="n">Rule</span>
+<span class="kn">from</span> <span class="nn">Token</span> <span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span> <span class="nn">PumpTree</span> <span class="kn">import</span> <span class="n">PumpTree</span>
+<span class="kn">from</span> <span class="nn">Test</span> <span class="kn">import</span> <span class="n">Test</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">add_method</span><span class="p">,</span> <span class="n">Set</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Обертка в охранные нетерминалы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">guard</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+    <span class="n">previous_cfg</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+    <span class="n">regular_nterms</span> <span class="o">=</span> <span class="n">previous_cfg</span><span class="o">.</span><span class="n">regular_nterms</span><span class="p">()</span>
+    <span class="n">new_rules</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">previous_cfg</span><span class="o">.</span><span class="n">nterms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">regular_nterms</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">previous_cfg</span><span class="p">[</span><span class="n">nterm</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">is_term</span><span class="p">():</span>
+                    <span class="n">left</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">left</span><span class="o">.</span><span class="n">is_guard</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">new_rule</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="p">[</span><span class="n">Token</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">value</span><span class="p">)])</span>
+                    <span class="k">if</span> <span class="n">new_rule</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">new_rules</span><span class="p">:</span>
+                        <span class="n">new_rules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_rule</span><span class="p">)</span>
+                    <span class="n">token</span><span class="o">.</span><span class="n">is_guard</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="n">new_rules</span> <span class="o">+=</span> <span class="n">previous_cfg</span><span class="o">.</span><span class="n">rules</span>
+    
+    <span class="k">return</span> <span class="n">CFG</span><span class="p">(</span><span class="n">previous_cfg</span><span class="o">.</span><span class="n">start_nterm</span><span class="p">,</span> <span class="n">new_rules</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="first">
+<h2>FIRST<a class="headerlink" href="#first" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@add_method</span><span class="p">(</span><span class="n">CFG</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">FIRST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="p">{</span><span class="n">nterm</span> <span class="p">:</span> <span class="n">Set</span><span class="p">()</span> <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nterms</span><span class="p">}</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">previous_first</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">first</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">nterm</span><span class="p">]:</span>
+                <span class="n">product</span> <span class="o">=</span> <span class="n">Set</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">is_term</span><span class="p">():</span>
+                        <span class="n">product</span> <span class="o">*=</span> <span class="n">Set</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">)])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">product</span> <span class="o">*=</span> <span class="n">first</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+                <span class="n">first</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span> <span class="o">+=</span> <span class="n">product</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">previous_first</span> <span class="o">==</span> <span class="n">first</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="n">product</span> <span class="o">=</span> <span class="n">Set</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">is_term</span><span class="p">():</span>
+            <span class="n">product</span> <span class="o">*=</span> <span class="n">Set</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">)])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">product</span> <span class="o">*=</span> <span class="n">first</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">product</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="follow">
+<h2>FOLLOW<a class="headerlink" href="#follow" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@add_method</span><span class="p">(</span><span class="n">CFG</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">FOLLOW</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nterm</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">follow</span> <span class="o">=</span> <span class="p">{</span><span class="n">nterm</span> <span class="p">:</span> <span class="n">Set</span><span class="p">()</span> <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nterms</span><span class="p">}</span>
+    <span class="n">follow</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_nterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">Set</span><span class="p">([</span><span class="s1">&#39;$&#39;</span><span class="p">])</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">previous_follow</span> <span class="o">=</span> <span class="n">follow</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rule</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">partitions</span><span class="p">():</span>
+                <span class="n">follow</span><span class="p">[</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">Set</span><span class="o">.</span><span class="n">first</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">FIRST</span><span class="p">(</span><span class="n">partition</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">follow</span><span class="p">[</span><span class="n">rule</span><span class="o">.</span><span class="n">left</span><span class="p">],</span>
+                    <span class="n">k</span>
+                <span class="p">)</span>
+        <span class="k">if</span> <span class="n">previous_follow</span> <span class="o">==</span> <span class="n">follow</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="k">return</span> <span class="n">follow</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="last">
+<h2>LAST<a class="headerlink" href="#last" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@add_method</span><span class="p">(</span><span class="n">CFG</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">LAST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="p">{</span><span class="n">nterm</span> <span class="p">:</span> <span class="n">Set</span><span class="p">()</span> <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nterms</span><span class="p">}</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">previous_last</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">last</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">nterm</span><span class="p">]:</span>
+                <span class="n">product</span> <span class="o">=</span> <span class="n">Set</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">is_term</span><span class="p">():</span>
+                        <span class="n">product</span> <span class="o">*=</span> <span class="n">Set</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">)])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">product</span> <span class="o">*=</span> <span class="n">last</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+                <span class="n">last</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span> <span class="o">+=</span> <span class="n">product</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">previous_last</span> <span class="o">==</span> <span class="n">last</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="n">product</span> <span class="o">=</span> <span class="n">Set</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">is_term</span><span class="p">():</span>
+            <span class="n">product</span> <span class="o">*=</span> <span class="n">Set</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">)])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">product</span> <span class="o">*=</span> <span class="n">last</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">product</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="precede">
+<h2>PRECEDE<a class="headerlink" href="#precede" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@add_method</span><span class="p">(</span><span class="n">CFG</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">PRECEDE</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nterm</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">precede</span> <span class="o">=</span> <span class="p">{</span><span class="n">nterm</span> <span class="p">:</span> <span class="n">Set</span><span class="p">()</span> <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nterms</span><span class="p">}</span>
+    <span class="n">precede</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_nterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">Set</span><span class="p">([</span><span class="s1">&#39;^&#39;</span><span class="p">])</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">previous_precede</span> <span class="o">=</span> <span class="n">precede</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rule</span><span class="o">.</span><span class="n">is_terminal</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">partitions</span><span class="p">():</span>
+                <span class="n">precede</span><span class="p">[</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">Set</span><span class="o">.</span><span class="n">last</span><span class="p">(</span>
+                    <span class="n">precede</span><span class="p">[</span><span class="n">rule</span><span class="o">.</span><span class="n">left</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">LAST</span><span class="p">(</span><span class="n">partition</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="p">),</span>
+                    <span class="n">k</span>
+                <span class="p">)</span>
+        <span class="k">if</span> <span class="n">previous_precede</span> <span class="o">==</span> <span class="n">precede</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="k">return</span> <span class="n">precede</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Поиск токенов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p><strong>Утверждение</strong> <br />
+Терминал <span class="math notranslate nohighlight">\(a\)</span> принадлежит языку нетерминала <span class="math notranslate nohighlight">\(T\)</span> <span class="math notranslate nohighlight">\(\Leftrightarrow\)</span> <span class="math notranslate nohighlight">\(a \in {FIRST}_{2}(T)\)</span></p>
+<p><strong>Следствие</strong> <br />
+Пусть <span class="math notranslate nohighlight">\(T\)</span> - регулярный нетерминал. <br />
+<span class="math notranslate nohighlight">\(T\)</span> является токеном <span class="math notranslate nohighlight">\(\Leftrightarrow {FIRST}_{2}(T) \cap ({FOLLOW}_{1}(T) \cup {PRECEDE}_{1}(T)) = \varnothing\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">conflicted</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">regular_nterms</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span>
+            <span class="n">cfg</span><span class="o">.</span><span class="n">FIRST</span><span class="p">([</span><span class="n">nterm</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">intersection</span><span class="p">(</span>
+                <span class="n">cfg</span><span class="o">.</span><span class="n">FOLLOW</span><span class="p">(</span><span class="n">nterm</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> 
+                <span class="n">cfg</span><span class="o">.</span><span class="n">PRECEDE</span><span class="p">(</span><span class="n">nterm</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nterm</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">conflicted</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nterm</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">conflicted</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Порождение регулярных выражений<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Под <em>заведомо регулярным</em> нетерминалом будем понимать регулярный нетерминал, найденный до замыкания.</p>
+<p>Пусть <span class="math notranslate nohighlight">\(G = \langle \Sigma, N, S, P \rangle\)</span> - исходная грамматика, <span class="math notranslate nohighlight">\(M \subset N\)</span> - множество регулярных нетерминалов, <span class="math notranslate nohighlight">\(M_R \subset M\)</span> - множество заведомо регулярных нетерминалов,  <span class="math notranslate nohighlight">\(M_T \subset M\)</span> - множество токенов.</p>
+<p><strong>Алгоритм</strong></p>
+<ol class="simple">
+<li><p>Для всех <span class="math notranslate nohighlight">\(A \in M_R\)</span> строим грамматику <span class="math notranslate nohighlight">\(G_A = \langle \Sigma, N, A, P \rangle\)</span></p></li>
+<li><p>Фильтруем полезные нетерминалы <span class="math notranslate nohighlight">\(G_A\)</span></p></li>
+<li><p>Если <span class="math notranslate nohighlight">\(G_A\)</span> - леволинейная грамматика, переводим ее в праволинейную</p></li>
+<li><p>Для <span class="math notranslate nohighlight">\(A\)</span> порождаем регулярное выражение по <span class="math notranslate nohighlight">\(G_A\)</span></p></li>
+<li><p>Для всех <span class="math notranslate nohighlight">\(B \in M \setminus M_R\)</span> строим дерево разбора <span class="math notranslate nohighlight">\(T\)</span> до первых накачек <span class="math notranslate nohighlight">\(\gamma\)</span>, таких, что <span class="math notranslate nohighlight">\(\exists C \in N: (C \in \gamma \Rightarrow C \in M')\)</span></p></li>
+<li><p>Порождаем регулярное выражение для <span class="math notranslate nohighlight">\(B = \displaystyle \sum_{\alpha \in leaves(T)} substitute(\alpha, M') \)</span></p></li>
+<li><p>Для всех <span class="math notranslate nohighlight">\(C \in M_T\)</span> возвращаем регулярное выражение</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">token_regexes</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tokens</span><span class="p">):</span>
+	<span class="n">lr_nterms</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">regular_subset</span><span class="p">(</span><span class="n">Rule</span><span class="o">.</span><span class="n">is_left_linear</span><span class="p">)</span>
+
+	<span class="n">rr_nterms</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">regular_subset</span><span class="p">(</span><span class="n">Rule</span><span class="o">.</span><span class="n">is_right_linear</span><span class="p">)</span>
+	
+	<span class="n">other_nterms</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">regular_nterms</span><span class="p">()</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">lr_nterms</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">rr_nterms</span><span class="p">))</span>
+
+	<span class="n">regexes</span> <span class="o">=</span> <span class="p">{}</span>
+	<span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">lr_nterms</span><span class="p">:</span>
+		<span class="n">rg</span> <span class="o">=</span> <span class="n">RG</span><span class="o">.</span><span class="n">from_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">nterm</span><span class="p">)</span>
+		<span class="n">rg</span><span class="o">.</span><span class="n">to_right_linear</span><span class="p">()</span>
+		<span class="n">regexes</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">rg</span><span class="o">.</span><span class="n">to_regex</span><span class="p">()</span>
+	<span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">rr_nterms</span><span class="p">:</span>
+		<span class="n">rg</span> <span class="o">=</span> <span class="n">RG</span><span class="o">.</span><span class="n">from_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">nterm</span><span class="p">)</span>
+		<span class="n">regexes</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">rg</span><span class="o">.</span><span class="n">to_regex</span><span class="p">()</span>
+	<span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">other_nterms</span><span class="p">:</span>
+		<span class="n">tree</span> <span class="o">=</span> <span class="n">PumpTree</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">nterm</span><span class="p">,</span> <span class="n">regexes</span><span class="p">)</span>
+		<span class="n">regexes</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">generate_regex</span><span class="p">()</span>
+	
+	<span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+	<span class="k">for</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">regexes</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">nterm</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+			<span class="n">result</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">regexes</span><span class="p">[</span><span class="n">nterm</span><span class="p">]</span>
+	
+	<span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Автолексер<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">autolex</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+    <span class="n">guarded_cfg</span> <span class="o">=</span> <span class="n">guard</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+    <span class="n">tokens</span><span class="p">,</span> <span class="n">conflicted</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">guarded_cfg</span><span class="p">)</span>
+    <span class="n">regexes</span> <span class="o">=</span> <span class="n">token_regexes</span><span class="p">(</span><span class="n">guarded_cfg</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">guarded_cfg</span><span class="p">,</span> <span class="n">regexes</span><span class="p">,</span> <span class="n">conflicted</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Тесты<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TESTS_DIR</span> <span class="o">=</span> <span class="s1">&#39;tests&#39;</span>
+
+<span class="k">for</span> <span class="n">test_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">TESTS_DIR</span><span class="p">):</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">Test</span><span class="p">(</span>
+        <span class="n">test_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TESTS_DIR</span><span class="p">,</span> <span class="n">test_name</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">test</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">autolex</span><span class="p">)</span>
+    <span class="n">Test</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="n">Test</span><span class="o">.</span><span class="n">display_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "99dbc45095b24fc6b525e26c3f1b9079"}
+</script></div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"e42da3e3bdc34b73986fac5862b30413": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "99dbc45095b24fc6b525e26c3f1b9079": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "TabModel", "_titles": {"3": "Test 4", "2": "Test 3", "1": "Test 2", "4": "Test 5", "0": "Test 1", "5": "Test 6"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_04de57d4cbc14b458e8fa64c84405e31", "IPY_MODEL_28590dbb1cae4bbaa7e45f5db1543d79", "IPY_MODEL_f7f1926adf75477999e06cea02705a0b", "IPY_MODEL_6dee0c87def6443e983638a6904008ab", "IPY_MODEL_69f046e100104291b352047980028d1a", "IPY_MODEL_a95769ae2d524346b5e56d566c7a3098"], "layout": "IPY_MODEL_e42da3e3bdc34b73986fac5862b30413", "selected_index": 0}}, "73ca03d2304a40f282d8222e20005fbe": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "36b74238e4774fe4a413c0eb4a00816a": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "04de57d4cbc14b458e8fa64c84405e31": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_73ca03d2304a40f282d8222e20005fbe", "placeholder": "\u200b", "style": "IPY_MODEL_36b74238e4774fe4a413c0eb4a00816a", "value": "\n\t\t\t<div>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u0421-\u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430</b><br>\n\t\t\t\t\t[S] ::= ([S])[S]<br>[S] ::= _\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t<p>\n\t\t\t\t<b>\u041e\u0431\u0435\u0440\u0442\u043a\u0430 \u043e\u0445\u0440\u0430\u043d\u043d\u044b\u043c\u0438 \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u0430\u043c\u0438</b><br>\n\t\t\t\t [GUARD(] ::= (<br>[GUARD)] ::= )<br>[GUARD_] ::= _<br>[S] ::= [GUARD(][S][GUARD)][S]<br>[S] ::= [GUARD_]\n\t\t\t</p>\n\t\t\t\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b><font color=\"orange\">\u041a\u043e\u043d\u0444\u043b\u0438\u043a\u0442\u0443\u044e\u0449\u0438\u0435</font> \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u044b</b><br>\n\t\t\t[GUARD(]\n\t\t\t\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b>\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0442\u043e\u043a\u0435\u043d\u043e\u0432</b><br>\n\t\t\t[GUARD)] = )<br>[GUARD_] = _\n\t\t\t\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t"}}, "fb48ecdb36b44830842b08993ce845c1": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b4f76795c5fa47a0a4d01c2ee1d493be": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "28590dbb1cae4bbaa7e45f5db1543d79": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_fb48ecdb36b44830842b08993ce845c1", "placeholder": "\u200b", "style": "IPY_MODEL_b4f76795c5fa47a0a4d01c2ee1d493be", "value": "\n\t\t\t<div>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u0421-\u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430</b><br>\n\t\t\t\t\t[S] ::= [A]e[B]<br>[A] ::= [A]a<br>[A] ::= b<br>[B] ::= [A]c<br>[B] ::= d\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u043e\u043d\u0444\u043b\u0438\u043a\u0442\u0443\u044e\u0449\u0438\u0435 \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u044b <font color=\"green\">\u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b</font></b>\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b>\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0442\u043e\u043a\u0435\u043d\u043e\u0432</b><br>\n\t\t\t[B] = d|ba*c<br>[A] = ba*<br>[S] = ba*e(d|ba*c)\n\t\t\t\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t"}}, "971750da839f4a7bbe6e79cea626f1c8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a569dc95b4c54afea8735430256303f4": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "f7f1926adf75477999e06cea02705a0b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_971750da839f4a7bbe6e79cea626f1c8", "placeholder": "\u200b", "style": "IPY_MODEL_a569dc95b4c54afea8735430256303f4", "value": "\n\t\t\t<div>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u0421-\u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430</b><br>\n\t\t\t\t\t[S] ::= [A]<br>[S] ::= [B]<br>[S] ::= a<br>[A] ::= b[A]<br>[A] ::= c<br>[B] ::= [B]d<br>[B] ::= e\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u043e\u043d\u0444\u043b\u0438\u043a\u0442\u0443\u044e\u0449\u0438\u0435 \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u044b <font color=\"green\">\u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b</font></b>\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b>\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0442\u043e\u043a\u0435\u043d\u043e\u0432</b><br>\n\t\t\t[B] = ed*<br>[A] = b*c<br>[S] = b*c|ed*|a\n\t\t\t\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t"}}, "fb45db0423b8451a843639f746ada69d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c4a26c4042b74a5ab6127d84a737f7ba": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "6dee0c87def6443e983638a6904008ab": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_fb45db0423b8451a843639f746ada69d", "placeholder": "\u200b", "style": "IPY_MODEL_c4a26c4042b74a5ab6127d84a737f7ba", "value": "\n\t\t\t<div>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u0421-\u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430</b><br>\n\t\t\t\t\t[S] ::= q[Q]w[B]r[Q]t<br>[Q] ::= [A][B][C]<br>[Q] ::= a<br>[B] ::= x[A]y[C]z<br>[A] ::= [A]b<br>[A] ::= c<br>[C] ::= d[C]<br>[C] ::= e\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u043e\u043d\u0444\u043b\u0438\u043a\u0442\u0443\u044e\u0449\u0438\u0435 \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u044b <font color=\"green\">\u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b</font></b>\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b>\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0442\u043e\u043a\u0435\u043d\u043e\u0432</b><br>\n\t\t\t[A] = cb*<br>[C] = d*e<br>[Q] = cb*xcb*yd*ezd*e|a<br>[B] = xcb*yd*ez<br>[S] = q(cb*xcb*yd*ezd*e|a)wxcb*yd*ezr(cb*xcb*yd*ezd*e|a)t\n\t\t\t\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t"}}, "41c76c3d36844d34b1c3cc4546cd5da9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5c6290479b774a6fad50898abd1a857b": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "69f046e100104291b352047980028d1a": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_41c76c3d36844d34b1c3cc4546cd5da9", "placeholder": "\u200b", "style": "IPY_MODEL_5c6290479b774a6fad50898abd1a857b", "value": "\n\t\t\t<div>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u0421-\u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430</b><br>\n\t\t\t\t\t[S] ::= a[A]<br>[S] ::= [D]<br>[A] ::= [B]<br>[A] ::= [C]<br>[A] ::= a<br>[B] ::= b[A]<br>[C] ::= c<br>[D] ::= [D]d<br>[D] ::= e\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b><font color=\"orange\">\u041a\u043e\u043d\u0444\u043b\u0438\u043a\u0442\u0443\u044e\u0449\u0438\u0435</font> \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u044b</b><br>\n\t\t\t[A]\n\t\t\t\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b>\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0442\u043e\u043a\u0435\u043d\u043e\u0432</b><br>\n\t\t\t[C] = c<br>[D] = ed*<br>[B] = bb*(a|c)<br>[S] = ab*(a|c)|ed*\n\t\t\t\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t"}}, "362bb6c1e2474b5495b83f3e2941d250": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "123298007d2b42f3a13cc14edc105dcb": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a95769ae2d524346b5e56d566c7a3098": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_362bb6c1e2474b5495b83f3e2941d250", "placeholder": "\u200b", "style": "IPY_MODEL_123298007d2b42f3a13cc14edc105dcb", "value": "\n\t\t\t<div>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u041a\u0421-\u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430</b><br>\n\t\t\t\t\t[E] ::= [A]+[E]<br>[E] ::= [A]-[E]<br>[E] ::= [A]<br>[A] ::= [B]*[A]<br>[A] ::= [B]/[A]<br>[A] ::= [B]<br>[B] ::= -[C]<br>[B] ::= [C]<br>[C] ::= [N]<br>[C] ::= ([E])<br>[N] ::= [DZ][N]<br>[N] ::= [D]<br>[DZ] ::= 1<br>[DZ] ::= 2<br>[DZ] ::= 3<br>[DZ] ::= 4<br>[DZ] ::= 5<br>[DZ] ::= 6<br>[DZ] ::= 7<br>[DZ] ::= 8<br>[DZ] ::= 9<br>[D] ::= 0<br>[D] ::= [DZ]\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t<p>\n\t\t\t\t<b>\u041e\u0431\u0435\u0440\u0442\u043a\u0430 \u043e\u0445\u0440\u0430\u043d\u043d\u044b\u043c\u0438 \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u0430\u043c\u0438</b><br>\n\t\t\t\t [GUARD*] ::= *<br>[GUARD/] ::= /<br>[GUARD-] ::= -<br>[GUARD(] ::= (<br>[GUARD)] ::= )<br>[GUARD+] ::= +<br>[E] ::= [A][GUARD+][E]<br>[E] ::= [A][GUARD-][E]<br>[E] ::= [A]<br>[A] ::= [B][GUARD*][A]<br>[A] ::= [B][GUARD/][A]<br>[A] ::= [B]<br>[B] ::= [GUARD-][C]<br>[B] ::= [C]<br>[C] ::= [N]<br>[C] ::= [GUARD(][E][GUARD)]<br>[N] ::= [DZ][N]<br>[N] ::= [D]<br>[DZ] ::= 1<br>[DZ] ::= 2<br>[DZ] ::= 3<br>[DZ] ::= 4<br>[DZ] ::= 5<br>[DZ] ::= 6<br>[DZ] ::= 7<br>[DZ] ::= 8<br>[DZ] ::= 9<br>[D] ::= 0<br>[D] ::= [DZ]\n\t\t\t</p>\n\t\t\t\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b><font color=\"orange\">\u041a\u043e\u043d\u0444\u043b\u0438\u043a\u0442\u0443\u044e\u0449\u0438\u0435</font> \u043d\u0435\u0442\u0435\u0440\u043c\u0438\u043d\u0430\u043b\u044b</b><br>\n\t\t\t[DZ]<br>[D]<br>[GUARD(]<br>[GUARD-]<br>[GUARD)]\n\t\t\t\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t\n\t\t\t<b>\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0442\u043e\u043a\u0435\u043d\u043e\u0432</b><br>\n\t\t\t[GUARD+] = +<br>[GUARD/] = /<br>[GUARD*] = *\n\t\t\t\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t"}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lab4/autolex"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../panic_attack/index.html" title="назад страница">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">назад</p>
+            <p class="prev-next-title">Паническая атака</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
